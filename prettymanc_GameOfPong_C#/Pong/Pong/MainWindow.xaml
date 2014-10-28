@@ -1,0 +1,39 @@
+﻿<Window x:Name="PongWindow" x:Class="Pong.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Game of Pong" Height="550" Width="600" KeyDown="PongWindow_KeyDown" MouseMove="PongWindow_MouseMove" KeyUp="PongWindow_KeyUp" MinWidth="600" MinHeight="550" SizeChanged="PongWindow_SizeChanged" Icon="pongicon.ico">
+    <Grid x:Name="PongGrid" Background="#FF363636">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="194*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="PongCanvas" Background="#FF1F1E20" Width="550" Height="400" Margin="25,64,25,56.8" MouseEnter="PongCanvas_MouseEnter" MouseLeave="PongCanvas_MouseLeave" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label x:Name="lblRightPoint" Content="0" Canvas.Left="350" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#FF2A55F1" FontSize="24" FontFamily="MV Boli" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label x:Name="lblHitCount" Content="0" Canvas.Left="260" Foreground="#FF355FF8" FontFamily="MV Boli" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="lblLeftPoint" Content="0" Canvas.Left="172.8" FontFamily="MV Boli" Foreground="#FF2A55F1" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Rectangle x:Name="RightPaddle" Fill="#FF880BA9" Height="80" Canvas.Left="520" Stroke="Black" Canvas.Top="165" Width="20" RenderTransformOrigin="1.983,0.711" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            <Rectangle x:Name="LeftPaddle" Fill="#FF880BA9" Height="80" Stroke="Black" Width="20" Canvas.Left="10" Canvas.Top="165" Margin="0"/>
+            <Rectangle x:Name="PongBall" Fill="#FF880BA9" Height="20" Canvas.Left="265" Stroke="Black" Canvas.Top="190" Width="20"/>
+            <MediaElement x:Name="meHitSound" Height="38" Canvas.Left="500" Canvas.Top="10" Width="40" Source="hit.mp3" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+            <MediaElement x:Name="meMissSound" Height="38" Width="42" Canvas.Left="10" Canvas.Top="10" LoadedBehavior="Manual" Source="miss.mp3"/>
+            <MediaElement x:Name="meDeflectSound" Height="41" Width="45" Canvas.Left="495" Canvas.Top="349" LoadedBehavior="Manual" UnloadedBehavior="Manual" Source="deflect.wav"/>
+            <Label x:Name="lblWinLose" Content="" Canvas.Left="125" Canvas.Top="165" FontSize="36" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontFamily="MV Boli" Foreground="#FF2A55F1" Width="300" Height="70"/>
+        </Canvas>
+        <Menu x:Name="PongMenu" Height="20" VerticalAlignment="Top" Background="#FF1F1E20" Foreground="#FF2A55F1" Grid.ColumnSpan="3" Margin="0,0,-0.4,0">
+            <MenuItem x:Name="FileMenuItem" Header="_Game" Margin="5,0,0,0">
+                <MenuItem x:Name="StartNewGameFileMenuItem" Header="_Start" Background="#FF1F1E20" BorderBrush="#FF2A55F1" Click="StartNewGameFileMenuItem_Click"/>
+                <MenuItem x:Name="PauseFileMenuItem" Header="_Pause" Background="#FF1F1E20" BorderBrush="#FF2A55F1" Click="PauseFileMenuItem_Click" IsEnabled="False"/>
+                <MenuItem x:Name="MuteFilemenuItem" Header="_Mute" Background="#FF1F1E20" BorderBrush="#FF2A55F1" Click="MuteFilemenuItem_Click"/>
+                <MenuItem x:Name="CloseFileMenuItem" Header="_Close" Background="#FF1F1E20" BorderBrush="#FF2A55F1" Click="CloseFileMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="HelpMenuItem" Header="_Help">
+                <MenuItem x:Name="UsageHelpMenuItem" Header="_Usage" Background="#FF1F1E20" BorderBrush="#FF2A55F1" Click="UsageHelpMenuItem_Click"/>
+                <MenuItem x:Name="AboutHelpMenuItem" Header="_About" Background="#FF1F1E20" BorderBrush="#FF2A55F1" Click="AboutHelpMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <Label x:Name="lblPause" Content="_Pause" Margin="10.4,0,100,9.8" VerticalAlignment="Bottom" FontFamily="MV Boli" FontSize="20" Foreground="#FF355FF8" MouseEnter="lblPause_MouseEnter" MouseLeave="lblPause_MouseLeave" VerticalContentAlignment="Center" Grid.Column="2" PreviewMouseLeftButtonUp="lblPause_PreviewMouseLeftButtonUp" IsEnabled="False" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="lblStart_Reset" Content="_Start" Margin="100,0,10,9.8" RenderTransformOrigin="0.519,0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="MV Boli" FontSize="20" Foreground="#FF2A55F1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseEnter="lblStart_Reset_MouseEnter" MouseLeave="lblStart_Reset_MouseLeave" PreviewMouseLeftButtonUp="lblStart_Reset_PreviewMouseLeftButtonUp"/>
+
+    </Grid>
+</Window>
